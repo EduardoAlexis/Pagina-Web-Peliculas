@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .header{
+            width: 100%;
+            height: 60px;
+            background: rgb(255, 255, 255);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.349);
+        }
+        .header input{
+            width: 900px;
+            box-sizing: border-box; 
+            border: 1px solid gray;
+            border-radius: 10px;
+            padding: 10px; 
+            font-size: 20px;
+        }
+        .container{
+            display: grid;
+            height: 100vh;
+            grid-template: 1fr / 100px 1fr;
+        }
+        .barra{
+            background: tomato;
+            align-items: center;
+            justify-items: center;
+            justify-content: space-around;
+        }
+        .contenido{
+            background: rgb(255, 255, 255);
+            display: block;
+            text-align: center;
+            justify-content: space-around;
+            align-content: space-around;
+            width: 1fr;
+        }
+        .contenido-clases{
+            padding: 20px;
+            margin: 50px;
+            width: 1700px;
+        }     
+        .clases1{
+            background-image: url(dog.jpg);
+            background-size: 100%;
+            display: flex;
+            justify-content: flex-start;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.774);
+            cursor: pointer;
+        }
+        .clases1 p{
+            width: 400px;
+            background: rgba(218, 56, 15, 0.486);
+            color: white;
+            text-decoration: none;
+            margin: 130px 0 0 0;
+            text-align: start;
+        }
+        .clases1 h1{
+            position: absolute ;
+            color: rgb(34, 34, 34);
+            transform: translate(10px ,-60px);
+        }
+        .perfil{
+            display: flex;
+            align-items: center;
+        }
+        .perfil h2{
+            margin: 0 10px;
+        }
+        .header h1{
+            margin: 0 320px 0 0;
+            color: tomato;
+        }
+        .primaryPlaylist-list{
+            display: flex;
+        }
+        .primaryPlaylistItem img {
+            width: 170px;
+            height: 256px;
+            object-fit: cover;
+        }
+        .primaryPlaylist-list .primaryPlaylistItem {
+            margin-right: 10px;
+        }
+        .primaryPlaylist-list{
+            overflow: overlay;
+        }
+        h3 , h2{
+            text-align: start;
+        }
+        .overlay{
+            display: flex;
+            background: rgba(0, 0, 0, 0.527);
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: 1s;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay.active{
+            opacity: 1;
+            visibility: visible;
+            transition: 1s;
+        }
+        .info{
+            width: 40%;
+            height: 80%;
+            background: white;
+            display: block;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .btn{
+            text-align: center;
+            padding: 10px;
+            margin: 10px;
+            background: rgb(11, 231, 202);
+            border-radius: 10px;
+            outline: 0;
+            cursor: pointer;
+            border: none;
+            box-shadow: inset 0 -.3em rgba(0, 0, 0, 0.212);
+            transition: 1s;
+        }
+        #salir{
+            background: rgb(235, 83, 83);
+        }
+        .btn:active  {
+            transform: scale(.8);
+        }
+        #btn , .h1{
+            margin: 20% 0 20% 0;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Movies.es</h1>
+            <form action="" id="form" >
+                <input type="text" placeholder="Buscar ahora">
+            </form>
+            <div class="perfil">
+                <h2>Albeiro Frito</h2>
+                <img style="width: 50px; height: 50px; border-radius: 50%;" src="dog.jpg" alt="">
+            </div>
+        </div>
+    </header>
+
+    <div class="overlay active" id="overlay">
+        <div class="info">
+            <h1 class="h1" >Ver Ahora En 4k</h1>
+            <h2 class="h1" >kcxnashdjuv sudvgciyusadg casdg iysu vgvsadiv vsadv yas sc sdcvyjsddc vfvsjgahdcv sckua c</h2>
+            <button class="btn" id=overbuton style="font-size: 20px;">Continuar</button>
+            <button class="btn" id=salir style="font-size: 20px;">Salir</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="barra" style="color: white;">
+            <figure style="margin: 1em 0 1em 0; text-align: center;  text-decoration: none;">
+                <img src="001-home.png" alt="" width="50%" style="cursor: pointer;">
+                <p >Home</p>
+            </figure>
+            <figure style="margin: 1em 0 1em 0; text-align: center;  text-decoration: none;">
+                <img src="170-fire.png" alt="" width="50%" style="cursor: pointer;">
+                <p ">Trending</p>
+            </figure>
+            <figure style="margin: 1em 0 1em 0; text-align: center;  text-decoration: none;">
+                <img src="219-heart.png" alt="" width="50%" style="cursor: pointer;">
+                <p >Mas likes</p>
+            </figure>
+            <figure style="margin: 1em 0 1em 0; text-align: center;  text-decoration: none;">
+                <img src="149-cog.png" alt="" width="50%" style="cursor: pointer;">
+                <p >Ajustes</p>
+            </figure>
+        </div>
+        <div class="contenido-clases">
+            <div class="contenido">
+                <div class="primaryPlaylist">
+                    <h3 class="primaryPlaylist-topic">A los golpes</h3>
+                    <h2 class="primaryPlaylist-title">Acción</h2>
+                    <div class="primaryPlaylist-list" id="action">
+                      <img src="src/images/loader.gif" width="50" height="50" alt="">
+                    </div>
+                  </div>
+                  <div class="primaryPlaylist">
+                    <h3 class="primaryPlaylist-topic">Para llorar</h3>
+                    <h2 class="primaryPlaylist-title">Drama</h2>
+                    <div class="primaryPlaylist-list" id="drama">
+                        <img src="src/images/loader.gif" width="50" height="50" alt="">
+                    </div>
+                  </div>
+                  <div class="primaryPlaylist">
+                    <h3 class="primaryPlaylist-topic">Dibujitos animados</h3>
+                    <h2 class="primaryPlaylist-title">Animación</h2>
+                    <div class="primaryPlaylist-list" id="animation">
+                      <img src="src/images/loader.gif" width="50" height="50" alt="">
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="src/js/home.js"></script>
+  
+</body>
+</html>

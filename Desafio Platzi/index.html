@@ -7,48 +7,87 @@
     <style>
         body{
             margin: 0;
+            height: 100vh;
         }
         .header{
-            width: 100%;
-            height: 60px;
             background: rgb(255, 255, 255);
             display: flex;
             justify-content: space-around;
             align-items: center;
             box-shadow: 0 10px 10px rgba(0, 0, 0, 0.349);
+            grid-area: header;
         }
         .header input{
-            width: 900px;
             box-sizing: border-box; 
             border: 1px solid gray;
+            width: 700px;
+            padding: 10px;
             border-radius: 10px;
-            padding: 10px; 
             font-size: 20px;
         }
-        .container{
-            display: grid;
-            height: 100vh;
-            grid-template: 1fr / 100px 1fr;
+        .header h1{
+            margin: 0 100px 0 0;
+            color: rgb(230, 14, 14);
         }
         .barra{
-            background: tomato;
+            grid-area: barra;
+            background: linear-gradient(to right, #ff0000, #ff458b);
             align-items: center;
             justify-items: center;
             justify-content: space-around;
         }
+
+        .featuring {
+            background: linear-gradient(to right, #ff0000, #ff458b);
+            display: flex;
+            align-items: center;
+            padding-left: 100px;
+            color: white;
+            padding: 10px;
+            grid-area: buscado;
+            height: 130px;
+        }
+        .featuring.desactive {
+            display: none;
+        }
+        .featuring-image {
+            margin-right: 20px;
+        }
+
+        .featuring-title {
+            margin: 10px;
+        }
+        .featuring-album {
+            font-size: 1.3em;
+            margin: 10px;
+        }
+        .contenido-clases{
+            display: grid;
+            box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.349);
+            grid-area: contenido;
+            overflow: auto;
+        }     
+        .container{
+            display: grid;
+            height: 100vh;
+            grid-template: 60px 1fr / 100px 1fr;
+            grid-template-areas: 'barra header'
+            'barra contenido';
+        }
+        .container.buscar{
+            grid-template: 60px 1fr 150px / 100px 1fr;
+            grid-template-areas: 'barra header'
+                                 'barra contenido'
+                                 'barra buscado';
+        }
         .contenido{
             background: rgb(255, 255, 255);
-            display: block;
             text-align: center;
             justify-content: space-around;
             align-content: space-around;
-            width: 1fr;
+            overflow: auto;
+            padding: 10px;
         }
-        .contenido-clases{
-            padding: 20px;
-            margin: 50px;
-            width: 1700px;
-        }     
         .clases1{
             background-image: url(dog.jpg);
             background-size: 100%;
@@ -57,29 +96,13 @@
             box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.774);
             cursor: pointer;
         }
-        .clases1 p{
-            width: 400px;
-            background: rgba(218, 56, 15, 0.486);
-            color: white;
-            text-decoration: none;
-            margin: 130px 0 0 0;
-            text-align: start;
-        }
-        .clases1 h1{
-            position: absolute ;
-            color: rgb(34, 34, 34);
-            transform: translate(10px ,-60px);
-        }
+
         .perfil{
             display: flex;
             align-items: center;
         }
         .perfil h2{
             margin: 0 10px;
-        }
-        .header h1{
-            margin: 0 320px 0 0;
-            color: tomato;
         }
         .primaryPlaylist-list{
             display: flex;
@@ -118,8 +141,8 @@
             transition: 1s;
         }
         .info{
-            width: 40%;
-            height: 80%;
+            width: 20%;
+            height: 40%;
             background: white;
             display: block;
             text-align: center;
@@ -143,37 +166,31 @@
         .btn:active  {
             transform: scale(.8);
         }
-        #btn , .h1{
-            margin: 20% 0 20% 0;
+        .h1 , .btn{
+            margin: 1fr 0 1fr 0;
             padding: 10px;
+        }
+        .grid{
+            display: grid;
+            grid-template: 60px 1fr / 1fr;
         }
 
     </style>
 </head>
 <body>
-    <header>
+
+    <section class="container" id="contenido">
         <div class="header">
             <h1>Movies.es</h1>
             <form action="" id="form" >
-                <input type="text" placeholder="Buscar ahora">
+                <input type="text" placeholder="Buscar ahora" name="name">
             </form>
             <div class="perfil">
                 <h2>Albeiro Frito</h2>
                 <img style="width: 50px; height: 50px; border-radius: 50%;" src="dog.jpg" alt="">
             </div>
         </div>
-    </header>
 
-    <div class="overlay active" id="overlay">
-        <div class="info">
-            <h1 class="h1" >Ver Ahora En 4k</h1>
-            <h2 class="h1" >kcxnashdjuv sudvgciyusadg casdg iysu vgvsadiv vsadv yas sc sdcvyjsddc vfvsjgahdcv sckua c</h2>
-            <button class="btn" id=overbuton style="font-size: 20px;">Continuar</button>
-            <button class="btn" id=salir style="font-size: 20px;">Salir</button>
-        </div>
-    </div>
-
-    <div class="container">
         <div class="barra" style="color: white;">
             <figure style="margin: 1em 0 1em 0; text-align: center;  text-decoration: none;">
                 <img src="001-home.png" alt="" width="50%" style="cursor: pointer;">
@@ -192,31 +209,55 @@
                 <p >Ajustes</p>
             </figure>
         </div>
-        <div class="contenido-clases">
-            <div class="contenido">
-                <div class="primaryPlaylist">
-                    <h3 class="primaryPlaylist-topic">A los golpes</h3>
-                    <h2 class="primaryPlaylist-title">Acción</h2>
-                    <div class="primaryPlaylist-list" id="action">
-                      <img src="src/images/loader.gif" width="50" height="50" alt="">
-                    </div>
-                  </div>
-                  <div class="primaryPlaylist">
-                    <h3 class="primaryPlaylist-topic">Para llorar</h3>
-                    <h2 class="primaryPlaylist-title">Drama</h2>
-                    <div class="primaryPlaylist-list" id="drama">
-                        <img src="src/images/loader.gif" width="50" height="50" alt="">
-                    </div>
-                  </div>
-                  <div class="primaryPlaylist">
-                    <h3 class="primaryPlaylist-topic">Dibujitos animados</h3>
-                    <h2 class="primaryPlaylist-title">Animación</h2>
-                    <div class="primaryPlaylist-list" id="animation">
-                      <img src="src/images/loader.gif" width="50" height="50" alt="">
-                    </div>
-                  </div>
-
+        <div class="home-featuring" >
+          <div class="featuring desactive" id="featuring">
+            <div class="featuring-image">
+              <img src="src/images/covers/solar-sailer.jpg" width="70" height="100" alt="">
             </div>
+            <div class="featuring-content">
+              <p class="featuring-title">Pelicula encontrada</p>
+              <p class="featuring-album">titulo de la peli</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contenido-clases" >
+            <div class="contenido"  >
+                <div class="home-primary">
+                    <div class="primaryPlaylist">
+                        <h3 class="primaryPlaylist-topic">A los golpes</h3>
+                        <h2 class="primaryPlaylist-title">Acción</h2>
+                        <div class="primaryPlaylist-list" id="action">
+                          <img src="src/images/loader.gif" width="50" height="50" alt="">
+                        </div>
+                      </div>
+                      <div class="primaryPlaylist">
+                        <h3 class="primaryPlaylist-topic">Para llorar</h3>
+                        <h2 class="primaryPlaylist-title">Drama</h2>
+                        <div class="primaryPlaylist-list" id="drama">
+                            <img src="src/images/loader.gif" width="50" height="50" alt="">
+                        </div>
+                      </div>
+                      <div class="primaryPlaylist">
+                        <h3 class="primaryPlaylist-topic">Dibujitos animados</h3>
+                        <h2 class="primaryPlaylist-title">Animación</h2>
+                        <div class="primaryPlaylist-list" id="animation">
+                          <img src="src/images/loader.gif" width="50" height="50" alt="">
+                        </div>
+                      </div>                                          
+                    </div>                    
+                </div>
+            </div>
+        
+    </section>
+
+    <div class="overlay" id="overlay">
+        <div class="info" id="info">
+            <h1 class="h1" id="h1"></h1>
+            <img src="" alt="Imagen Playlist" id="img">
+            <p class="p" id="p"></p>
+            <button class="btn" id=overbuton style="font-size: 20px;">Continuar</button>
+            <button class="btn" id=salir style="font-size: 20px;">Salir</button>
         </div>
     </div>
 
